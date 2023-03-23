@@ -1,0 +1,25 @@
+#include <Servo.h>
+
+Servo gateServo;
+
+int sensor1Pin = 2;
+int sensor2Pin = 3;
+
+void setup() {
+  gateServo.attach(9);
+  pinMode(sensor1Pin, INPUT);
+  pinMode(sensor2Pin, INPUT);
+}
+
+void loop() {
+  if (digitalRead(sensor1Pin) == HIGH) {
+    gateServo.write(0);
+  }
+  else if (digitalRead(sensor2Pin) == HIGH) {
+    gateServo.write(180);
+  }
+  else {
+    gateServo.write(90);
+  }
+  delay(100);
+}
